@@ -1,16 +1,17 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from AddToDB import addTextToDB
+from AnalyzeAudioFile import analyzeAudio
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
+PATH_AUDIO = './Audio Files/'
+PATH_TEXT = './Text Files/'
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    nameOfFile = '13.4 - 2'
+    nameOfWAV = nameOfFile + '.wav'
+    text = analyzeAudio(PATH_AUDIO + nameOfWAV)
+    addTextToDB(text, PATH_TEXT, nameOfFile)
+
+
+
