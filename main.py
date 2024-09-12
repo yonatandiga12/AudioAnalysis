@@ -3,7 +3,7 @@ import re
 import nltk
 from nltk import word_tokenize
 
-from AddToDB import addTextToDB
+from AddToDB import addTextToDB, saveWordDictInDB
 from AnalyzeAudioFile import analyzeAudio
 from DownloadFromYoutube import downloadFromYoutube
 from nltk.stem import WordNetLemmatizer
@@ -51,6 +51,8 @@ def HandlingSentence(text):
     for key, value in sorted(resDict.items(), key=lambda x: x[1], reverse=True):
         print("{} : {}".format(key, value))
 
+    return resDict
+
 
 if __name__ == '__main__':
 
@@ -71,6 +73,6 @@ You are asked to remain alert and follow Home Front Command instructions. We are
 Keep acting responsibly and calmly, as you have done so far, and make sure to follow the instructions. The IDF is fully prepared on all its fronts for defense and attack. We have been prepared in advance for a variety of scenarios. We are working in close cooperation with the United States and our regional partners to act against the launches and intercept them. We have multiple layers of security from the Air Force and Navy, along with additional security circles from the U.S. military. We have an excellent aerial defense system, and it is currently fully operational. However, remember that defense is never airtight, so it is crucial to follow the guidelines and listen to the Home Front Command's instructions—they save lives.
     """
 
-    HandlingSentence(text)
-
+    wordsDict = HandlingSentence(text)
+    saveWordDictInDB(wordsDict)
 

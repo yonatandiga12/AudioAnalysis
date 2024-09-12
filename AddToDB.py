@@ -6,3 +6,7 @@ def addTextToDB(text, path, nameOfFile):
     with open(pathToSave, "a") as f:
         f.write(text)
 
+
+
+def saveWordDictInDB(wordsDict):
+    pass
