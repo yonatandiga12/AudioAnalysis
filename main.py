@@ -1,3 +1,4 @@
+import os
 import re
 
 import nltk
@@ -16,7 +17,7 @@ from nltk.stem.snowball import SnowballStemmer
 #nltk.download('omw-1.4')  # Open Multilingual WordNet
 
 PATH_AUDIO = './AudioFiles/'
-PATH_TEXT = './Text Files/'
+PATH_TEXT = 'C:\\Fun projects\\audioAnalysis\\Text Files\\'
 
 
 def HandlingSentence(text):
@@ -54,25 +55,47 @@ def HandlingSentence(text):
     return resDict
 
 
+def readTextFiles():
+
+    # Change the directory
+    os.chdir(PATH_TEXT)
+
+    for file in os.listdir():
+        # Check whether file is in text format or not
+        if file.endswith(".txt"):
+            file_path = f"{PATH_TEXT}{file}"
+
+            with open(file_path, 'r') as f:
+                text = f.read()
+
+                wordsDict = HandlingSentence(text)
+                saveWordDictInDB(wordsDict)
+
+
+
+
+
+
+
 if __name__ == '__main__':
 
     #downloadFromYoutube()
-    nameOfFile = '8.10'
-    nameOfWAV = nameOfFile + '.wav'
-    text = analyzeAudio(PATH_AUDIO + nameOfWAV)
-    addTextToDB(text, PATH_TEXT, nameOfFile)
+    # nameOfFile = '8.10'
+    # nameOfWAV = nameOfFile + '.wav'
+    # text = analyzeAudio(PATH_AUDIO + nameOfWAV)
+    # addTextToDB(text, PATH_TEXT, nameOfFile)
 
     #After the text is being saved convert it to english and let the lemminaizer have it.
 
-    text = """
-    
-Good evening. Iran has launched unmanned aerial vehicles (UAVs) from its territory toward Israeli territory. We are monitoring the threat in the airspace; it takes several hours for these threats to reach Israeli territory. The IDF and the Air Force are executing the pre-prepared plan that we have been preparing for. As part of this preparation, GPS services will be unavailable in certain areas; this disruption is intentional and according to the plan. If we detect additional threats with a shorter arrival time, we will update you immediately.
+#     text = """
+#
+# Good evening. Iran has launched unmanned aerial vehicles (UAVs) from its territory toward Israeli territory. We are monitoring the threat in the airspace; it takes several hours for these threats to reach Israeli territory. The IDF and the Air Force are executing the pre-prepared plan that we have been preparing for. As part of this preparation, GPS services will be unavailable in certain areas; this disruption is intentional and according to the plan. If we detect additional threats with a shorter arrival time, we will update you immediately.
+#
+# You are asked to remain alert and follow Home Front Command instructions. We are familiar with these threats and have dealt with them in the past. If an alert is activated in your area, you must enter a protected space and stay there for at least 10 minutes—no less. We will update you if you need to remain in the protected space for a longer time. I urge you to avoid spreading rumors and unverified reports. Stay updated through official IDF spokesperson messages and Home Front Command guidelines. I will continue to update here on any changes.
+#
+# Keep acting responsibly and calmly, as you have done so far, and make sure to follow the instructions. The IDF is fully prepared on all its fronts for defense and attack. We have been prepared in advance for a variety of scenarios. We are working in close cooperation with the United States and our regional partners to act against the launches and intercept them. We have multiple layers of security from the Air Force and Navy, along with additional security circles from the U.S. military. We have an excellent aerial defense system, and it is currently fully operational. However, remember that defense is never airtight, so it is crucial to follow the guidelines and listen to the Home Front Command's instructions—they save lives.
+#     """
 
-You are asked to remain alert and follow Home Front Command instructions. We are familiar with these threats and have dealt with them in the past. If an alert is activated in your area, you must enter a protected space and stay there for at least 10 minutes—no less. We will update you if you need to remain in the protected space for a longer time. I urge you to avoid spreading rumors and unverified reports. Stay updated through official IDF spokesperson messages and Home Front Command guidelines. I will continue to update here on any changes.
+    readTextFiles()
 
-Keep acting responsibly and calmly, as you have done so far, and make sure to follow the instructions. The IDF is fully prepared on all its fronts for defense and attack. We have been prepared in advance for a variety of scenarios. We are working in close cooperation with the United States and our regional partners to act against the launches and intercept them. We have multiple layers of security from the Air Force and Navy, along with additional security circles from the U.S. military. We have an excellent aerial defense system, and it is currently fully operational. However, remember that defense is never airtight, so it is crucial to follow the guidelines and listen to the Home Front Command's instructions—they save lives.
-    """
-
-    #wordsDict = HandlingSentence(text)
-    #saveWordDictInDB(wordsDict)
 
