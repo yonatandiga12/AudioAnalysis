@@ -1,3 +1,6 @@
+
+import ydl as ydl
+import youtube_dl
 from pytube import YouTube
 from pytube import Playlist
 import os
@@ -5,10 +8,16 @@ import time
 destinationPath = '.\\Audio Files\\'
 
 
+def download_from_url(url):
+    pass
+
+
 def downloadFromYoutube(playlistURL="https://www.youtube.com/watch?v=lnUJQNpBCKE&list=PLfWCwAR0WfwXKZtythXhdJ9nE4MsrgMJ8&index=3"):
     playlist = Playlist(playlistURL)
     for url in playlist:
-        download_audio(url)
+        #download_audio(url)
+        download_from_url(url)
+
 
     # for url in playlist:
     #     yt = YouTube(url)
@@ -48,5 +57,7 @@ def download_audio(url, retries=3):
 
 
 if __name__ == '__main__':
-    txt = input("Type here playlist url to downloading from youtube: ")
-    downloadFromYoutube(txt)
+    #txt = input("Type here playlist url to downloading from youtube: ")
+    #downloadFromYoutube(txt)
+
+    downloadFromYoutube()

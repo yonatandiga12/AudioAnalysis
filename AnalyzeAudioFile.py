@@ -1,7 +1,8 @@
 # from google.cloud import speech
 #
 import speech_recognition as sr
-
+from pydub import AudioSegment
+import io
 #for whisper
 import numpy
 import soundfile
@@ -9,6 +10,7 @@ import torch
 
 
 
+# works for wav files
 def analyzeAudio(path):
     # Initialize the recognizer
     recognizer = sr.Recognizer()

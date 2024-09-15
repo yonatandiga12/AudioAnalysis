@@ -57,10 +57,10 @@ def HandlingSentence(text):
 if __name__ == '__main__':
 
     #downloadFromYoutube()
-    nameOfFile = '7.10 - 2'
+    nameOfFile = '8.10'
     nameOfWAV = nameOfFile + '.wav'
-    #text = analyzeAudio(PATH_AUDIO + nameOfWAV)
-    #addTextToDB(text, PATH_TEXT, nameOfFile)
+    text = analyzeAudio(PATH_AUDIO + nameOfWAV)
+    addTextToDB(text, PATH_TEXT, nameOfFile)
 
     #After the text is being saved convert it to english and let the lemminaizer have it.
 
@@ -73,6 +73,6 @@ You are asked to remain alert and follow Home Front Command instructions. We are
 Keep acting responsibly and calmly, as you have done so far, and make sure to follow the instructions. The IDF is fully prepared on all its fronts for defense and attack. We have been prepared in advance for a variety of scenarios. We are working in close cooperation with the United States and our regional partners to act against the launches and intercept them. We have multiple layers of security from the Air Force and Navy, along with additional security circles from the U.S. military. We have an excellent aerial defense system, and it is currently fully operational. However, remember that defense is never airtight, so it is crucial to follow the guidelines and listen to the Home Front Command's instructions—they save lives.
     """
 
-    wordsDict = HandlingSentence(text)
-    saveWordDictInDB(wordsDict)
+    #wordsDict = HandlingSentence(text)
+    #saveWordDictInDB(wordsDict)
 
